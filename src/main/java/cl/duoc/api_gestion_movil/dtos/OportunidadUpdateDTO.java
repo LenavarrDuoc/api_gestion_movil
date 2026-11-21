@@ -1,19 +1,17 @@
 package cl.duoc.api_gestion_movil.dtos;
 
+import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-import lombok.Data;
 
 @Data
 public class OportunidadUpdateDTO {
     private String titulo;
     private String descripcion;
     private BigDecimal montoEstimado;
-    private String etapaVenta; // Ej: PROSPECTO, NEGOCIACION, CERRADO_GANADO
-    private Integer probabilidadExito; // Porcentaje (0-100)
+    private String etapaVenta;
+    private Integer probabilidadExito;
     private LocalDate fechaCierreEsperada;
     private Long contactoId;
-
-    // Getters y Setters
+    private Long organizacionId; // <-- Esto soluciona el error del Mapper
 }

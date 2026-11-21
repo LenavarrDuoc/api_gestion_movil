@@ -5,10 +5,11 @@ import lombok.Data;
 @Data
 public class OrganizacionUpdateDTO {
     private String nombre;
-    private String direccion;
-    private String industria;
-    private String sitioWeb;
-    private String telefonoPrincipal;
-
-    // Getters y Setters
+    private String tipoOrganizacion;
+    private String rubro;
+    private String comuna;
+    private String region;
+    private String website;
+    private String audienciaObjetivo;
+    private String observacion;
 }

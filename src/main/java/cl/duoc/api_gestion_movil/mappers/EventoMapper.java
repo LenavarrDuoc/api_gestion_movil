@@ -16,6 +16,7 @@ public interface EventoMapper {
     @Mapping(source = "organizacionId", target = "organizacion.id")
     Evento toEntity(EventoInputDTO inputDTO);
 
-    @Mapping(source = "organizacionId", target = "organizacion.id")
+    // Le decimos a MapStruct que al actualizar NO toque la organización
+    @Mapping(target = "organizacion", ignore = true)
     void updateEntity(EventoUpdateDTO updateDTO, @MappingTarget Evento entity);
 }
