@@ -8,6 +8,8 @@ import cl.duoc.api_gestion_movil.utils.LogUtil;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.hibernate.internal.util.Optional;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,8 +45,25 @@ public class UsuarioService {
         return mapper.toResponseDTO(repository.save(entity));
     }
 
+    // Agrega este méto.do dentro de tu UsuarioService existente
+
+    public UsuarioResponseDTO updatePassword(String id, UsuarioPasswordUpdateDTO input) {
+        log.info("Actualizando contraseña para usuario ID: {}", id);
+        Usuario entity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+
+        mapper.updatePassword(input, entity);
+
+        // IMPORTANTE: Si usas Spring Security, aquí debes encriptar la clave antes de guardar.
+        // Ejemplo: entity.setPassword(passwordEncoder.encode(input.getPassword()));
+
+        return mapper.toResponseDTO(repository.save(entity));
+    }
+
     public void delete(String id) {
         log.info("Eliminando usuario ID: {}", id);
         repository.deleteById(id);
     }
+
+
 }

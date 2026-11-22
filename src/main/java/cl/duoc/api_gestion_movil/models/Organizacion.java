@@ -13,17 +13,30 @@ public class Organizacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(name = "tipo_organizacion")
     private String tipoOrganizacion;
+
+    @Column(name = "rubro")
     private String rubro;
+
+    @Column(name = "comuna")
     private String comuna;
+
+    @Column(name = "region")
     private String region;
+
+    @Column(name = "website")
     private String website;
+
+    @Column(name = "audiencia_objetivo")
     private String audienciaObjetivo;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "observacion", columnDefinition = "TEXT")
     private String observacion;
 }

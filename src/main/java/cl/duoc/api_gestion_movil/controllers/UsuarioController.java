@@ -2,6 +2,7 @@ package cl.duoc.api_gestion_movil.controllers;
 
 import cl.duoc.api_gestion_movil.dtos.*;
 import cl.duoc.api_gestion_movil.services.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,17 @@ public class UsuarioController {
     public ResponseEntity<UsuarioResponseDTO> update(@PathVariable String id, @RequestBody UsuarioUpdateDTO input) {
         log.info("Petición HTTP: PUT /api/usuarios/{}", id);
         return ResponseEntity.ok(service.update(id, input));
+    }
+
+    // Agrega este méto.do y los imports necesarios dentro de tu UsuarioController existente
+
+    @PatchMapping("/{id}/password")
+    public ResponseEntity<UsuarioResponseDTO> updatePassword(
+            @PathVariable String id,
+            @Valid @RequestBody UsuarioPasswordUpdateDTO input) {
+
+        log.info("Petición HTTP: PATCH /api/usuarios/{}/password", id);
+        return ResponseEntity.ok(service.updatePassword(id, input));
     }
 
     @DeleteMapping("/{id}")

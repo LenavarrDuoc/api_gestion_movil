@@ -6,12 +6,16 @@ import java.time.LocalDate;
 
 @Data
 public class OportunidadUpdateDTO {
-    private String titulo;
+    private String nombre;
+    private String tipoOportunidad;
     private String descripcion;
-    private BigDecimal montoEstimado;
-    private String etapaVenta;
-    private Integer probabilidadExito;
-    private LocalDate fechaCierreEsperada;
-    private Long contactoId;
-    private Long organizacionId; // <-- Esto soluciona el error del Mapper
+    private String fuenteInformacion;
+    private String fechaDeteccion;
+    private String responsableInterno;
+    private String prioridad;
+    private String potencialEstimado;
+    private String estado;
+    private String fechaUltimaActualizacion;
+    private Long organizacionId; // FK
+    private String observacion;
 }

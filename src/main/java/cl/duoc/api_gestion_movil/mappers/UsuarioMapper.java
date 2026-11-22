@@ -1,6 +1,7 @@
 package cl.duoc.api_gestion_movil.mappers;
 
 import cl.duoc.api_gestion_movil.dtos.UsuarioInputDTO;
+import cl.duoc.api_gestion_movil.dtos.UsuarioPasswordUpdateDTO;
 import cl.duoc.api_gestion_movil.dtos.UsuarioResponseDTO;
 import cl.duoc.api_gestion_movil.dtos.UsuarioUpdateDTO;
 import cl.duoc.api_gestion_movil.models.Usuario;
@@ -12,4 +13,7 @@ public interface UsuarioMapper {
     UsuarioResponseDTO toResponseDTO(Usuario entity);
     Usuario toEntity(UsuarioInputDTO inputDTO);
     void updateEntity(UsuarioUpdateDTO updateDTO, @MappingTarget Usuario entity);
+    // Nuevo método para actualizar solo la contraseña
+    void updatePassword(UsuarioPasswordUpdateDTO updateDTO, @MappingTarget Usuario entity);
+
 }

@@ -7,11 +7,14 @@ import lombok.Data;
 @Data
 public class EventoUpdateDTO {
     private String titulo;
-    private String descripcion;
-    private String ubicacion; // Link de reunión o dirección física
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaFin;
-    private String estado; // Ej: PENDIENTE, COMPLETADO, CANCELADO
-
-    // Getters y Setters
+    private String tipoEvento;
+    private String fecha;
+    private String hora;
+    private String region;
+    private String comuna;
+    private Long organizacionId;
+    private String organizacionNombre;
+    private Integer publicoEsperado;
+    private String condicionesParticipacion;
+    private String rutaFotoEvidencia;
 }

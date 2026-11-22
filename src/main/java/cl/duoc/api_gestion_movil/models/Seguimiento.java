@@ -13,29 +13,51 @@ public class Seguimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "oportunidad_id", nullable = false, foreignKey = @ForeignKey(name = "fk_seguimiento_oportunidad", foreignKeyDefinition = "FOREIGN KEY (oportunidad_id) REFERENCES oportunidades(id) ON DELETE CASCADE"))
+    @JoinColumn(
+            name = "oportunidad_id",
+            nullable = false,
+            foreignKey = @ForeignKey(
+                    name = "fk_seguimiento_oportunidad",
+                    foreignKeyDefinition = "FOREIGN KEY (oportunidad_id) REFERENCES oportunidades(id) ON DELETE CASCADE"
+            )
+    )
     private Oportunidad oportunidad;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contacto_id", foreignKey = @ForeignKey(name = "fk_seguimiento_contacto", foreignKeyDefinition = "FOREIGN KEY (contacto_id) REFERENCES contactos(id) ON DELETE SET NULL"))
+    @JoinColumn(
+            name = "contacto_id",
+            foreignKey = @ForeignKey(
+                    name = "fk_seguimiento_contacto",
+                    foreignKeyDefinition = "FOREIGN KEY (contacto_id) REFERENCES contactos(id) ON DELETE SET NULL"
+            )
+    )
     private Contacto contacto;
 
+    @Column(name = "usuario_email")
     private String usuarioEmail;
+
+    @Column(name = "tipo_gestion")
     private String tipoGestion;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "propuesta", columnDefinition = "TEXT")
     private String propuesta;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "respuesta_cliente", columnDefinition = "TEXT")
     private String respuestaCliente;
 
+    @Column(name = "proxima_accion")
     private String proximaAccion;
+
+    @Column(name = "fecha_gestion", length = 50)
     private String fechaGestion;
+
+    @Column(name = "fecha_proxima_accion", length = 50)
     private String fechaProximaAccion;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "observacion", columnDefinition = "TEXT")
     private String observacion;
 }

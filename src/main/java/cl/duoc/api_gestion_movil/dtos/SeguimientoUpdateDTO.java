@@ -6,11 +6,14 @@ import lombok.Data;
 
 @Data
 public class SeguimientoUpdateDTO {
-    private String tipoInteraccion; // Ej: LLAMADA, EMAIL, REUNION_PRESENCIAL
-    private String notas;
-    private LocalDateTime fechaInteraccion;
-    private Long oportunidadId;
-    private Long contactoId;
-
-    // Getters y Setters
+    private Long oportunidadId; // FK requerida
+    private Long contactoId;    // FK opcional
+    private String usuarioEmail;
+    private String tipoGestion;
+    private String propuesta;
+    private String respuestaCliente;
+    private String proximaAccion;
+    private String fechaGestion;
+    private String fechaProximaAccion;
+    private String observacion;
 }

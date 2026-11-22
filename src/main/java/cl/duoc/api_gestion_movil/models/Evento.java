@@ -13,26 +13,41 @@ import java.util.UUID;
 public class Evento {
 
     @Id
-    @Column(length = 36)
+    @Column(name = "id", length = 36)
+    @Builder.Default
     private String id = UUID.randomUUID().toString();
 
-    @Column(nullable = false)
+    @Column(name = "titulo", nullable = false)
     private String titulo;
+
+    @Column(name = "tipo_evento", length = 100)
     private String tipoEvento;
+
+    @Column(name = "fecha", length = 50)
     private String fecha;
+
+    @Column(name = "hora", length = 20)
     private String hora;
+
+    @Column(name = "region")
     private String region;
+
+    @Column(name = "comuna")
     private String comuna;
 
-    // Relacionado a Organización (Corregido a ManyToOne para consistencia, o puedes dejarlo como Long directo si lo prefieres)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organizacion_id")
     private Organizacion organizacion;
 
+    @Column(name = "organizacion_nombre")
     private String organizacionNombre;
+
+    @Column(name = "publico_esperado")
     private Integer publicoEsperado;
+
+    @Column(name = "condiciones_participacion", length = 500)
     private String condicionesParticipacion;
 
-    @Column(length = 1000)
+    @Column(name = "ruta_foto_evidencia", length = 1000)
     private String rutaFotoEvidencia;
 }

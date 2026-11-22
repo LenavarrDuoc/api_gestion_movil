@@ -13,23 +13,36 @@ import java.util.UUID;
 public class Usuario {
 
     @Id
-    @Column(length = 36)
+    @Column(name = "id", length = 36)
+    @Builder.Default
     private String id = UUID.randomUUID().toString();
 
+    @Column(name = "p_nombre")
     private String pNombre;
+
+    @Column(name = "s_nombre")
     private String sNombre;
+
+    @Column(name = "p_apellido")
     private String pApellido;
+
+    @Column(name = "s_apellido")
     private String sApellido;
+
+    @Column(name = "fec_nac")
     private Long fecNac;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "rol", length = 50, nullable = false)
+    @Builder.Default
     private RolUsuario rol = RolUsuario.CLIENTE;
 
-    @Column(length = 1000)
+    @Column(name = "foto_uri", length = 1000)
     private String fotoUri;
 }
