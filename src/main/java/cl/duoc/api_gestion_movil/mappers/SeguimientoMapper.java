@@ -10,15 +10,18 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface SeguimientoMapper {
+
     @Mapping(source = "oportunidad.id", target = "oportunidadId")
     @Mapping(source = "contacto.id", target = "contactoId")
     SeguimientoResponseDTO toResponseDTO(Seguimiento entity);
 
-    @Mapping(source = "oportunidadId", target = "oportunidad.id")
-    @Mapping(source = "contactoId", target = "contacto.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "oportunidad", ignore = true)
+    @Mapping(target = "contacto", ignore = true)
     Seguimiento toEntity(SeguimientoInputDTO inputDTO);
 
-    @Mapping(source = "oportunidadId", target = "oportunidad.id")
-    @Mapping(source = "contactoId", target = "contacto.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "oportunidad", ignore = true)
+    @Mapping(target = "contacto", ignore = true)
     void updateEntity(SeguimientoUpdateDTO updateDTO, @MappingTarget Seguimiento entity);
 }

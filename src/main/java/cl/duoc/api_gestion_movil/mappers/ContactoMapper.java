@@ -10,12 +10,15 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface ContactoMapper {
+
     @Mapping(source = "organizacion.id", target = "organizacionId")
     ContactoResponseDTO toResponseDTO(Contacto entity);
 
-    @Mapping(source = "organizacionId", target = "organizacion.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "organizacion", ignore = true)
     Contacto toEntity(ContactoInputDTO inputDTO);
 
-    @Mapping(source = "organizacionId", target = "organizacion.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "organizacion", ignore = true)
     void updateEntity(ContactoUpdateDTO updateDTO, @MappingTarget Contacto entity);
 }

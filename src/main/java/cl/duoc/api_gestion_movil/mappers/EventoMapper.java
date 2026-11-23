@@ -10,13 +10,16 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface EventoMapper {
+
     @Mapping(source = "organizacion.id", target = "organizacionId")
     EventoResponseDTO toResponseDTO(Evento entity);
 
-    @Mapping(source = "organizacionId", target = "organizacion.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "organizacion", ignore = true)
     Evento toEntity(EventoInputDTO inputDTO);
 
-    // Le decimos a MapStruct que al actualizar NO toque la organización
+    // Al actualizar NO toca la organización ni el ID
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "organizacion", ignore = true)
     void updateEntity(EventoUpdateDTO updateDTO, @MappingTarget Evento entity);
 }
